@@ -4,39 +4,26 @@ namespace cmdNotes
 {
     public class Program
     {
-        static List<string> Notes = new List<string>();
-        
-        private static void NewNote()
+    public static void Main()
         {
-            string notetext = Console.ReadLine();
-            Program.Notes.Add(notetext);
-            
-        }
-        private static void PrintNotes()
-        {
-            int count = 1;
-            Console.WriteLine("----------------");
-            foreach (string note in Program.Notes)
-            {
-                Console.WriteLine($"{count}: {note}");
-                count++;
-            }
-            Console.WriteLine("----------------");
-        }
-        public static void Main()
-        {
+            Notebook notesObject = new Notebook(); 
+
             while (true)
             {
-                Console.Write("Choose an action\nA - Add a note\nP - Print all current notes\n");
+                Console.WriteLine("----------------------------------------------------------------------------");
+                Console.Write("Choose an action\nA - Add a note\nP - Print all current notes\nD - delete a note\n");
                 string userChoice = Console.ReadLine();
                 if (userChoice.ToUpper() == "A")
                 {
-                    Console.WriteLine("Type your note:");
-                    NewNote();
+                    notesObject.NewNote();
                 }
                 else if (userChoice.ToUpper() == "P")
                 {
-                    PrintNotes();
+                    notesObject.PrintNotes();
+                }
+                else if (userChoice.ToUpper() == "D")
+                {
+                    notesObject.DeleteNote();
                 }
                 else
                 {
@@ -44,6 +31,7 @@ namespace cmdNotes
                 }
             }
         }
+
     }
 
 }
